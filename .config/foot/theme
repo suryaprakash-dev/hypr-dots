@@ -1,0 +1,27 @@
+
+[colors]
+foreground=FFFFFF
+background=070202
+selection-foreground=070202
+selection-background=FFFFFF
+
+regular0=522929  # black
+regular1=FFDFCC  # red
+regular2=CCF5FF  # green
+regular3=FFD3CC  # yellow
+regular4=E69A9A  # blue
+regular5=9AD7E6  # magenta
+regular6=E6A49A  # cyan
+regular7=FFDFCC  # white
+
+bright0=8F5757   # bright black
+bright1=F0C3AA   # bright red
+bright2=AAE3F0   # bright green
+bright3=F0B3AA   # bright yellow
+bright4=E69A9A   # bright blue
+bright5=9AD7E6   # bright magenta
+bright6=E6A49A   # bright cyan
+bright7=F0C3AA   # bright white
+
+[colors]
+cursor=FFFFFF CB5613
