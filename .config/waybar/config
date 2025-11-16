@@ -1,0 +1,705 @@
+{
+    // Main Configuration
+    "modules-left": [
+        "group/app_drawer",
+        "custom/separator#blank",
+        "group/usage",
+        "custom/separator#blank",
+        "clock",
+        "custom/separator#blank_2",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "idle_inhibitor",
+        "custom/separator#line",
+        "hyprland/workspaces#numbers",
+        "custom/separator#line",
+        "custom/dunst"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/separator#blank",
+        "bluetooth",
+        "network",
+        "custom/separator#blank",
+        "custom/recording",
+        "custom/separator#line",  
+        "pulseaudio",
+        "mpris",
+        "backlight",
+        "custom/separator#line",  
+        "battery",
+        "custom/separator#blank", 
+        "group/utilities"
+    ],
+
+    // Standard Modules
+"temperature": {
+  "interval": 10,
+  "tooltip": true,
+  "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+  "critical-threshold": 82,
+  "format-critical": "{temperatureC}°C {icon}",
+  "format": "{temperatureC}°C {icon}",
+  "format-icons": ["󰈸"]
+},
+
+
+"backlight": {
+    "interval": 2,
+    "align": 0,
+    "rotate": 0,
+    "format": "{icon} {percent}%",
+    "format-icons": [
+        " ",
+        " ",
+        " ",
+        "󰃝 ",
+        "󰃞 ",
+        "󰃟 ",
+        "󰃠 "
+    ],
+    "tooltip-format": "backlight {percent}%",
+    "icon-size": 10,
+    "on-click": "",
+    "on-click-middle": "",
+    "on-click-right": "",
+    "on-update": "",
+    "smooth-scrolling-threshold": 1,
+},
+
+"battery": {
+    "interval": 5,
+    "align": 0,
+    "rotate": 0,
+    "bat": "BAT1",
+    "adapter": "ACAD",
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": "󱘖 {capacity}%",
+    "format-alt-click": "click",
+    "format-full": "{icon} Full",
+    "format-alt": "{icon} {time}",
+    "format-icons": [
+        "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+    ],
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "tooltip-format": "{timeTo} {power}w",
+    "on-click-middle": "",
+    "on-click-right": "",
+},
+
+"bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": " Bluetooth",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+    "tooltip": true,
+    "on-click": "$HOME/.config/hypr/scripts/bluetooth.sh",
+    "on-click-right": "rfkill toggle bluetooth"
+},
+
+"network": {
+    "format-wifi": "󰖩 ",
+    "format-ethernet": "󰈀 Connected",
+    "format-disconnected": "󰖪 ",
+    "format-disabled": "󱛅",
+    
+    "tooltip-format": "Network: {ifname}\n↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}",
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\nIP: {ipaddr}\n↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Network disconnected",
+    "tooltip-format-disabled": "Network disabled",
+
+    "on-click": "$HOME/.config/hypr/scripts/network.py",
+    "on-click-right": "rfkill toggle wifi",    
+    "interval": 5
+},
+"clock": {
+    "format": " {:%I:%M %p}", // AM PM format
+    //"format": "  {:%H:%M}", // 24H
+    "format-alt": "{:%A  |  %H:%M  |  %e %B}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+},
+
+
+"cpu": {
+    "format": "{usage}% 󰍛",
+    "interval": 1,
+    "min-length": 5,
+    "format-alt-click": "click",
+    "format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+    "format-icons": [
+        "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"
+    ],
+    "on-click-right": "foot -e htop",
+},
+
+"disk": {
+    "interval": 30,
+    //"format": "󰋊",
+    "path": "/",
+    //"format-alt-click": "click",
+    "format": "{percentage_used}% 󰋊",
+    //"tooltip": true,
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+},
+
+   "hyprland/window": {
+    "format": "{class}: {title}",
+    "rewrite": {
+         // Browsers
+        "chromium: (.*)": "󰊯 $1",
+        "firefox: (.*)": "󰈹 $1",
+        
+        // Terminals
+        "foot: (.*)": "󰽒 $1",
+        "kitty: (.*)": "󰄛 $1",
+       
+        // Text Editors & IDEs
+        "sublime_text: (.*/)([^/]*) • - Sublime Text.*": " $2",
+        "sublime_text: (.*)": " $1",
+        "code: (.*)": "󰨞 $1",
+        "nvim: (.*)": "󰕷 $1",
+        
+        // File Managers
+        "pcmanfm-qt: (.*)": "󰉋 $1",
+        "thunar: (.*)": "󰉋 $1",
+        "nautilus: (.*)": "󰉋 $1",
+        "dolphin: (.*)": "󰉋 $1",
+        
+        // Media & Entertainment
+        "telegram: (.*)": " $1",
+        "org.telegram.desktop: (.*)": " $1",
+        "vlc: (.*)": "󰕼 $1",
+        "zathura: (.*)": "󰈦 $1",
+        "spotify: (.*)": "󰓇 $1",
+        "discord: (.*)": "󰙯 $1",
+        "mpv: (.*)": " $1",
+        
+        // Office & Productivity
+        "libreoffice-startcenter: (.*)": " $1",
+        "libreoffice-writer: (.*)": " $1",
+        "libreoffice-math: (.*)": " $1",
+        "libreoffice-draw: (.*)": " $1",
+        "libreoffice-calc: (.*)": " $1",
+        "libreoffice-impress: (.*)": " $1",
+        
+        // Graphics & Design
+        "gimp: (.*)": " $1",
+        "inkscape: (.*)": " $1",
+        "blender: (.*)": "󰂫 $1",
+        "krita: (.*)": " $1",
+        
+        // System & Utilities
+        "htop: (.*)": "󰄨 $1",
+        "btop: (.*)": "󰄨 $1",
+        "calculator: (.*)": "󰃬 $1",
+        "org.pulseaudio.pavucontrol: (.*)": "󰕾 $1",
+        
+        // Gaming
+        "steam: (.*)": "󰓓 $1",
+        
+        // Email & Calendar
+        "thunderbird: (.*)": "󰇮 $1",
+       
+        
+        // Archive & Compression
+        "file-roller: (.*)": "󰛫 $1",
+        "arqiver: (.*)": "󰛫 $1",
+        "ark: (.*)": "󰛫 $1",
+
+        ": ": ""
+    },
+
+    "max-length": 30,
+    "tooltip-format": "{class}: {title}", // Full title on hover
+    "separate-outputs": true
+},
+
+"idle_inhibitor": {
+    "tooltip": true,
+    "tooltip-format-activated": "Idle_inhibitor active",
+    "tooltip-format-deactivated": "Idle_inhibitor not active",
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " ",
+        "deactivated": " ",
+    }
+},
+
+
+"memory": {
+    "interval": 10,
+    "format": "{used:0.1f}G 󰾆",
+    "format-alt": "{percentage}% 󰾆",
+    "format-alt-click": "click",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+},
+
+"mpris": {
+    "interval": 10,
+    "format": "{player_icon} ",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "scroll-step": 5.0,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "smooth-scrolling-threshold": 1,
+    "tooltip": true,
+    "tooltip-format": "{status_icon} {dynamic}\nLeft Click: previous\nMid Click: Pause\nRight Click: Next",
+    "player-icons": {
+        "chromium": "",
+        "default": "",
+        "firefox": "",
+        "kdeconnect": "",
+        "mopidy": "",
+        "mpv": "󰐹",
+        "spotify": "",
+        "vlc": "󰕼",
+    },
+    "status-icons": {
+        "paused": "󰐎",
+        "playing": "",
+        "stopped": "",
+    },
+    // "ignored-players": ["firefox"]
+    "max-length": 30,
+},
+    "network#speed": {
+    "interval": 1,
+    "format": "{ifname}",
+    "format-wifi": "{icon}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "format-ethernet": "󰌘  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "format-disconnected": "󰌙",
+    "tooltip-format": "{ipaddr}",
+    "format-linked": "󰈁 {ifname} (No IP)",
+    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname} 󰌘",
+    "tooltip-format-disconnected": "󰌙 Disconnected",
+    "min-length": 24,
+    "max-length": 24,
+    "format-icons": [
+        "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+    ]
+},
+
+"power-profiles-daemon": {
+  "format": "{icon} ",
+  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": "",
+    "power-saver": ""
+  }
+},
+
+
+
+"pulseaudio": {
+  "format": "{icon} {volume}%",
+  "format-bluetooth": "{icon} {volume}%",
+  "format-bluetooth-muted": " {icon}",
+  "format-muted": "󰸈",
+  "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+  "on-click": "pamixer --toggle-mute",
+  "on-click-right": "pavucontrol -t 3",
+  "tooltip": true,
+  "tooltip-format": "{icon} {desc} | {volume}%",
+},
+
+"pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "on-click": "pamixer --default-source --toggle-mute
+",
+    "on-click-right": "pavucontrol -t 4",
+    "tooltip-format": "{source_desc} | {source_volume}%",
+    "scroll-step": 5,
+},
+
+"tray": {
+    "icon-size": 20,
+    "spacing": 4,
+},
+
+"wlr/taskbar": {
+    "format": "{icon} {name}",
+    "icon-size": 16,
+    "all-outputs": false,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+        "wofi",
+        "rofi",
+        "kitty",
+    "kitty-dropterm"
+        ],
+},
+
+
+    // Custom Modules
+    "custom/file_manager": {
+    "format": " ",
+    "on-click": "xdg-open . &",
+    "tooltip": true,
+    "tooltip-format": "File Manager",
+},
+
+"custom/tty": {
+    "format": " ",
+    "on-click": "foot",
+    "tooltip": true,
+    "tooltip-format": "Launch Terminal",
+},
+
+"custom/browser": {
+    "format": "",
+    "on-click": "xdg-open https://",
+    "tooltip": true,
+    "tooltip-format": "Launch Browser",
+},
+
+
+"custom/cycle_wall": {
+    "format": " ",
+    "on-click": "$HOME/.config/hypr/scripts/swwwallpaper.sh -n",
+    "on-click-right": "$HOME/.config/hypr/scripts/swwwallpaper.sh -p",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Next Wallpaper\nRight Click: Previous wallpaper",
+},
+
+"custom/hint": {
+    "format": "󰺁 HINT!",
+    "on-click": "$HOME/.config/hypr/scripts/KeyHints.sh",
+    "on-click-right": "$HOME/.config/hypr/scripts/KeyBinds.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Quick Tips\nRight Click: Keybinds",
+},
+
+"custom/lock": {
+    "format": "󰌾",
+    "on-click": "swaylock",
+    "tooltip": true,
+    "tooltip-format": "󰷛 Screen Lock",
+},
+
+"custom/menu": {
+    "format": "  ",
+    "on-click": "$HOME/.config/hypr/scripts/rofilaunch.sh d",
+    "on-click-right": "$HOME/.config/hypr/scripts/rofiselect.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Rofi Menu\nRight Click: Rofi Theme",
+},
+
+"custom/screenshot": {
+    "format": "  ",
+    "on-click": "$HOME/.config/hypr/scripts/screenshot.sh s",
+    "on-click-right": "$HOME/.config/hypr/scripts/screenshot.sh p",
+    "tooltip": true,
+    "tooltip-format": "Screenshot",
+},
+
+"custom/colorpicker": {
+    "format": "  ",
+    "on-click": "$HOME/.config/hypr/scripts/colorpicker.sh",
+    "tooltip": true,
+    "tooltip-format": "Colorpicker",
+},
+
+"custom/clipboard": {
+    "format": "  ",
+    "on-click": "$HOME/.config/hypr/scripts/cliphist.sh -c",
+    "tooltip": true,
+    "tooltip-format": "Clipboard",
+},
+
+"custom/calculator": {
+    "format": "  ",
+    "on-click": "$HOME/.config/hypr/scripts/calculator.sh",
+    "tooltip": true,
+    "tooltip-format": "Calculator",
+},
+
+
+// This is a custom cava visualizer
+"custom/cava_mviz": {
+    "exec": "$HOME/.config/hypr/scripts/WaybarCava.sh",
+    "format": "{}"
+},
+
+"custom/playerctl": {
+    "format": "<span>{}</span>",
+    "return-type": "json",
+    "max-length": 25,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "scroll-step": 5.0,
+    "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
+    "smooth-scrolling-threshold": 1,
+},
+    
+"custom/power": {
+    "format": " ⏻ ",
+    "on-click": "$HOME/.config/hypr/scripts/logoutlaunch.sh 2",
+    "tooltip": true,
+    "tooltip-format": "Logout Menu",
+},
+
+"custom/reboot": {
+    "format": "󰜉",
+    "on-click": "systemctl reboot",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Reboot",
+},
+    
+"custom/quit": {
+    "format": "󰗼",
+    "on-click": "hyprctl dispatch exit",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Exit Hyprland",
+},
+
+"custom/swaync": {
+    "tooltip": true,
+    "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+    "format": "{} {icon} ",
+    "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+},
+
+ "custom/dunst": {
+    "format": "{icon} {0}",
+    "rotate": 0,
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": "",
+      "dnd-none": "",
+      "email-notification": "<span foreground='white'><sup></sup></span>",
+      "chat-notification": "󱋊<span foreground='white'><sup></sup></span>",
+      "warning-notification": "󱨪<span foreground='yellow'><sup></sup></span>",
+      "error-notification": "󱨪<span foreground='red'><sup></sup></span>",
+      "network-notification": "󱂇<span foreground='white'><sup></sup></span>",
+      "battery-notification": "󰁺<span foreground='white'><sup></sup></span>",
+      "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
+      "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
+      "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
+      "dnd": "",
+      "none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which dunstctl",
+    "exec-if": "dunstctl  is-paused &> /dev/null", // This is to check if dunst is running
+    "exec": "$HOME/.config/hypr/scripts/notifications.py",
+    "on-scroll-down": "sleep 0.1 && dunstctl history-pop",
+    "on-click": "dunstctl set-paused toggle",
+    "on-click-right": "dunstctl history-clear",
+    "interval": 1,
+    "tooltip": false,
+  },
+     
+"custom/recording": {
+        "exec": "~/.config/hypr/scripts/recording_status.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "bash ~/.config/hypr/scripts/recorder.sh"
+    },
+
+// Separators
+"custom/separator#dot": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+},
+"custom/separator#line": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+},
+"custom/separator#blank": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+},
+"custom/separator#blank_2": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+},
+
+  // numbers styles
+"hyprland/workspaces#numbers": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "show-special": false,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+      "*": 1
+    },
+    "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+    },
+},  
+
+    // Groups
+    "group/app_drawer": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "custom/menu",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/menu",
+            "custom/cycle_wall",
+            "custom/file_manager",
+            "custom/tty",
+            "custom/browser"
+        ]
+    },
+
+    "group/usage": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "cpu",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "cpu",
+            "memory"
+        ]
+    },
+
+    "group/mobo_drawer": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "cpu",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "cpu",
+            "temperature",		
+            "power-profiles-daemon",	
+            "memory",
+            "disk"
+        ]
+    },
+
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "pulseaudio",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#microphone"
+        ]
+    },
+
+    "group/status": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "custom/power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power",
+            "custom/lock"
+        ]
+    },
+
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "drawer-child",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power",
+            "custom/quit",
+            "custom/lock",
+            "custom/reboot"
+        ]
+    },
+    "group/utilities": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "drawer-child",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power",
+            "custom/clipboard",
+            "custom/screenshot",
+            "custom/colorpicker",
+            "custom/calculator"
+        ]
+    }
+}

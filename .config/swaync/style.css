@@ -1,0 +1,420 @@
+/* =============================================================================
+   SWAYNC COMBINED STYLESHEET
+   Combines control center and floating notifications styling
+   ============================================================================= */
+@import "colors.css";
+* {
+  all: unset;
+  font-family: "Readex Pro SemiBold, CaskaydiaCove Nerd Font Propo";
+  transition: background .3s ease-in-out;
+}
+
+/* =============================================================================
+   GLOBAL ELEMENTS
+   ============================================================================= */
+
+label {
+  font-size: 1.2rem;
+  margin: 0 4px;
+  color: @on_surface;
+}
+
+progressbar,
+progress,
+trough {
+  border-radius: 24px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+}
+
+trough {
+  background: @secondary_container;
+  margin: 0 8px;
+}
+
+trough highlight {
+  padding: 12px 0;
+  background: @secondary;
+  border-radius: 24px;
+}
+
+/* =============================================================================
+   FLOATING NOTIFICATIONS
+   ============================================================================= */
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.floating-notifications.background .notification-row .notification-background {
+  background: alpha(@surface, .6);
+  border-radius: 16px;
+  margin: 16px;
+  padding: 8px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+}
+
+.floating-notifications.background .notification-row .notification-background .notification {
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification.critical {
+  border: 2px solid @red;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+  /* margin: 8px; */
+}
+
+.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* {
+  min-height: 48px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action {
+  border-radius: 12px;
+  background-color: @surface_container;
+  margin: 2px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+  background-color: @secondary_container;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
+  background-color: @on_surface_container;
+  color: @on_surface;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button {
+  border-radius: 24px;
+  background-color: @surface;
+  color: @on_surface;
+  padding: 4px;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button:hover {
+  background-color: @secondary_container;
+  color: @on_secondary_container;
+}
+
+.floating-notifications.background .notification-row .notification-background .close-button:active {
+  background-color: @secondary_container;
+  color: @on_secondary;
+}
+
+/* Notification text content */
+.summary {
+  margin-left: 16px;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.body {
+  margin-left: 16px;
+  font-size: 1rem;
+}
+
+/* Notification progress bars */
+.notification.critical progress {
+  background-color: @primary;
+}
+
+.notification.low progress,
+.notification.normal progress {
+  background-color: @primary;
+}
+
+/* =============================================================================
+   CONTROL CENTER
+   ============================================================================= */
+
+.control-center {
+  background: alpha(@surface, 0.4);
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 0 8px 0 alpha(@shadow, .6);
+}
+
+/* Control center notifications */
+.control-center .notification-row .notification-background,
+.control-center .notification-row .notification-background .notification.critical {
+  background: @surface_container;
+  border-radius: 16px;
+  min-height: 24px;
+  margin: 2px 8px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+  padding: 12px;
+}
+
+.control-center .notification-row .notification-background .notification.critical {
+  color: @red;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* {
+  min-height: 48px;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action {
+  background: @surface_container;
+  margin: 2px;
+  border-radius: 16px;
+}
+
+.control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:hover {
+  background: @secondary_container;
+}
+
+.control-center .notification-row .notification-background .close-button {
+  background: transparent;
+  border-radius: 24px;
+  color: @on_surface;
+  background-color: @surface;
+  margin: 0px;
+  padding: 4px;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+  background-color: @secondary_container;
+}
+
+/* =============================================================================
+   NOTIFICATION GROUPS
+   ============================================================================= */
+
+.notification-group {
+  margin: 8px 4px;
+}
+
+.notification-group-headers {
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.notification-group-icon {
+  padding: 4px;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: @surface_container;
+  color: @on_surface;
+  margin: 4px;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: @secondary_container;
+}
+
+/* =============================================================================
+   WIDGETS
+   ============================================================================= */
+
+/* Widget labels */
+.widget-label {
+  margin: 4px 0;
+}
+
+.widget-label label {
+  font-size: 1.4rem;
+  margin: 0 7rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  margin: 6px 12px;
+  border: none;
+}
+
+/* Menu button bar */
+.menu-button-bar>button {
+  margin: 0 2px;
+  padding: 12px;
+  background: @surface_container;
+  border-radius: 24px;
+}
+
+.menu-button-bar>button:hover {
+  background: @secondary_container;
+}
+
+.menu-button-bar>button>label {
+  font-size: 1.4rem;
+}
+
+/* Power buttons */
+.power-buttons,
+.powermode-buttons {
+  background: @secondary_container;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 16px;
+}
+
+.powermode-buttons>button,
+.power-buttons>button {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.powermode-buttons>button:hover,
+.power-buttons>button:hover {
+  background: alpha(@tertiary, .2);
+}
+
+/* color picker */
+
+.colorpicker>button>label {
+  font-size: 1.4rem;
+}
+
+/* =============================================================================
+   VOLUME & BRIGHTNESS WIDGETS
+   ============================================================================= */
+
+.widget-backlight {
+  margin: 4px;
+}
+
+.widget-volume {
+  margin: 4px;
+}
+
+.widget-volume>box>label {
+  font-size: 1.4rem;
+}
+
+.widget-volume>box>button>label {
+  font-size: 1.4rem;
+  margin-right: 8px;
+  text-shadow: 0 0 2px alpha(@shadow, .6);
+}
+
+.widget-volume>box>button:hover>label {
+  color: @secondary;
+}
+
+.per-app-volume {
+  margin: 8px 0;
+}
+
+
+/* =============================================================================
+   BUTTONS GRID WIDGET
+   ============================================================================= */
+
+.widget-buttons-grid {
+  margin: 8px 8px 8px 8px;
+  border-radius: 20px;
+  background: alpha(@surface_container, .7);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+  margin: 4px 4px 4px 4px;
+  padding: .5rem 3.85rem;
+  background: @surface_container;
+  border-radius: 999px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button label {
+  font-size: 1.4rem;
+  font-weight: bolder;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+  background: @secondary_container;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover label {
+  color: @on_secondary_container;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button.toggle:checked {
+  background: @secondary;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button.toggle:checked:hover {
+  background: shade(@secondary, 1.2);
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button.toggle:checked label {
+  color: @on_secondary;
+}
+
+/* =============================================================================
+   DO NOT DISTURB WIDGET
+   ============================================================================= */
+
+.widget-dnd {
+  margin: 2px 4px;
+  padding: 4px;
+}
+
+.widget-dnd>switch {
+  padding: 4px;
+  background: @surface_container;
+  color: @on_surface;
+  border-radius: 24px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+}
+
+.widget-dnd>switch:hover {
+  background: @secondary_container;
+  color: @on_secondary_container;
+}
+
+.widget-dnd>switch:checked {
+  background: @secondary;
+  color: @on_secondary;
+}
+
+.widget-dnd>switch:hover:checked {
+  background: shade(@secondary, 1.2);
+  color: @on_secondary;
+}
+
+.widget-dnd>switch slider {
+  padding: 2px;
+  background: alpha(@secondary_container, 0.4);
+  border-radius: 24px;
+  border: 2px solid @on_secondary_container;
+  color: @on_secondary_container;
+}
+
+.widget-dnd>switch:checked slider {
+  border: 2px solid @on_secondary;
+  color: @on_secondary;
+}
+
+/* =============================================================================
+   NOTIFICATION TITLE WIDGET
+   ============================================================================= */
+
+.widget-title {
+  margin: 2px 8px;
+}
+
+.widget-title button {
+  padding: .2rem .8rem;
+  background: @surface_container;
+  border-radius: 24px;
+  box-shadow: 0 0 2px 0 alpha(@shadow, .6);
+}
+
+.widget-title button label {
+  font-size: 1.2rem;
+}
+
+.widget-title button:hover {
+  background: @secondary_container;
+}
+
+.widget-title button:hover label {
+  color: @on_secondary_container;
+}

@@ -1,0 +1,134 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+		min-height: 0;  
+    font-size: 97%;
+ 
+}
+@import "theme.css";
+
+window#waybar {
+ 	background-color: rgba(28, 28, 30, 0.50);
+ 	border-bottom: 1px solid rgba(26,27,38,0);
+  border-radius: 20px;
+  color: transparent;
+}
+#workspaces button {
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px;
+    border: 0px;
+    border-radius: 8px;
+    margin: 4px 3px;
+    padding: 0px 5px;
+    color: @main-fg;
+    animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+    margin-left: 2px;
+    padding-left: 11px;
+    padding-right: 11px;
+    margin-right: 2px;
+    animation: ws_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+tooltip {
+color: @wb-act-fg;
+background: @main-bg;
+border-radius: 20px 20px;
+margin: 5px;
+padding: 2px 15px;
+}
+
+tooltip label {
+color: @wb-act-fg;
+}
+
+#window,
+#battery,
+#temperature,
+#memory,
+#disk,
+#custom-dot_update,
+#custom-swaync,
+#custom-hypridle,
+#idle_inhibitor,
+#clock,
+#custom-playerctl,
+#power-profiles-daemon,
+#custom-cycle_wall,
+#tray,
+#custom-dunst,
+#custom-lock,
+#cpu {
+	color: @wb-hvr-fg;
+	border-radius: 50px 50px;
+	margin: 5px;
+	padding: 2px 15px;
+}
+
+/*-----Indicators----*/
+#custom-hypridle.notactive,
+#idle_inhibitor.activated {
+	color: @wb-act-bg;
+}
+
+#custom-recording,
+#mpris {
+	color: #E63946;
+	background: #0F1419;
+	border-radius: 50px 50px;
+	margin: 5px;
+	padding-left: 8px;
+	padding-right: 2px;
+}
+
+#pulseaudio,
+#backlight,
+#network,
+#bluetooth,
+#custom-browser,
+#custom-cycle_wall,
+#custom-file_manager,
+#custom-tty,
+#custom-settings,
+#custom-power,
+#custom-clipboard,
+#custom-screenshot,
+#custom-colorpicker,
+#custom-calculator {
+	color: @wb-act-fg;
+	background: @main-bg;
+	border-radius: 50px 50px;
+	margin: 5px;
+	padding: 2px 10px;
+}
+
+#custom-menu,
+#custom-power {
+	color: @wb-act-fg;
+	background: @wb-act-bg;
+	border-radius: 50px 50px;
+	margin: 5px;
+	padding: 2px 10px;
+}
+
+#battery.critical:not(.charging) {
+	color: #f53c3c;
+	animation-name: blink;
+	animation-duration: 3.0s;
+	animation-timing-function: steps(12);
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}

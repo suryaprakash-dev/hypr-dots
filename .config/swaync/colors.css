@@ -1,0 +1,205 @@
+
+/* =============================================================================
+   SWAYNC WALLBASH COLOR TEMPLATE
+   Dynamic colors generated from wallpaper using Hyprdots Wallbash
+   Save as: ~/.config/wallbash/Wall-Dcol/swaync.dcol
+   ============================================================================= */
+
+/* =============================================================================
+   PRIMARY COLORS - Main theme colors from wallpaper
+   ============================================================================= */
+
+@define-color primary #070202;
+@define-color on_primary #FFFFFF;
+@define-color primary_container #6B3A3A;
+@define-color on_primary_container #FFFFFF;
+
+/* =============================================================================
+   SECONDARY COLORS - Supporting colors for UI elements  
+   ============================================================================= */
+
+@define-color secondary #09272E;
+@define-color on_secondary #FFFFFF;
+@define-color secondary_container #3A626B;
+@define-color on_secondary_container #FFFFFF;
+
+/* =============================================================================
+   TERTIARY COLORS - Accent colors for highlights
+   ============================================================================= */
+
+@define-color tertiary #480B02;
+@define-color on_tertiary #FFFFFF;
+@define-color tertiary_container #6B403A;
+@define-color on_tertiary_container #FFFFFF;
+
+/* =============================================================================
+   ERROR/CRITICAL COLORS - For notifications and error states
+   ============================================================================= */
+
+@define-color error #CB5613;
+@define-color on_error #FFFFFF;
+@define-color error_container #6B4C3A;
+@define-color on_error_container #FFFFFF;
+
+/* Critical notification color - using accent color */
+@define-color red #CB5613;
+
+/* =============================================================================
+   SURFACE COLORS - Background colors for different UI levels
+   ============================================================================= */
+
+@define-color surface #522929;
+@define-color on_surface #FFFFFF;
+@define-color surface_variant #7D4B4B;
+@define-color on_surface_variant #FFFFFF;
+
+/* Surface containers for elevated elements */
+@define-color surface_container_lowest #522929;
+@define-color surface_container_low #6B3A3A;
+@define-color surface_container #7D4B4B;
+@define-color surface_container_high #8F5757;
+@define-color surface_container_highest #A36565;
+@define-color on_surface_container #FFFFFF;
+
+/* =============================================================================
+   OUTLINE AND BORDERS
+   ============================================================================= */
+
+@define-color outline #C27A7A;
+@define-color outline_variant #E69A9A;
+
+/* =============================================================================
+   SHADOW AND OVERLAY EFFECTS  
+   ============================================================================= */
+
+@define-color shadow #FFCCCC;
+@define-color scrim #F0AAAA;
+
+/* Inverse colors for high contrast elements */
+@define-color inverse_surface #AAE3F0;
+@define-color inverse_on_surface #FFFFFF;
+@define-color inverse_primary #09272E;
+
+/* =============================================================================
+   SWAYNC SPECIFIC COLORS - Using Wallbash color variables
+   ============================================================================= */
+
+/* Notification priority colors */
+@define-color notification_critical #CB5613;
+@define-color notification_normal #070202;
+@define-color notification_low #C27A7A;
+
+/* Widget colors based on wallpaper scheme */
+@define-color widget_accent #09272E;
+@define-color widget_background #7D4B4B;
+@define-color widget_hover #3A626B;
+
+/* Button states using dynamic colors */
+@define-color button_default #7D4B4B;
+@define-color button_hover #3A626B;
+@define-color button_active #09272E;
+@define-color button_checked #09272E;
+
+/* Volume and brightness sliders */
+@define-color slider_track #3A626B;
+@define-color slider_fill #09272E;
+@define-color slider_thumb #FFFFFF;
+
+/* Power button colors - using different accent colors */
+@define-color power_shutdown #CB5613;
+@define-color power_restart #480B02;
+@define-color power_suspend #070202;
+@define-color power_hibernate #09272E;
+
+/* =============================================================================
+   BRIGHTNESS/BACKLIGHT WIDGET COLORS
+   ============================================================================= */
+
+@define-color backlight_icon #FFFFFF;
+@define-color backlight_slider_bg #7D4B4B;
+@define-color backlight_slider_fill #070202;
+
+/* =============================================================================
+   VOLUME WIDGET COLORS
+   ============================================================================= */
+
+@define-color volume_icon #FFFFFF;
+@define-color volume_slider_bg #7D4B4B;
+@define-color volume_slider_fill #09272E;
+@define-color volume_mute #CB5613;
+
+/* =============================================================================
+   TOGGLE BUTTON COLORS (WiFi, Bluetooth, etc.)
+   ============================================================================= */
+
+@define-color toggle_off #7D4B4B;
+@define-color toggle_off_hover #8F5757;
+@define-color toggle_on #09272E;
+@define-color toggle_on_hover #480B02;
+
+/* =============================================================================
+   DO NOT DISTURB WIDGET
+   ============================================================================= */
+
+@define-color dnd_switch_bg #7D4B4B;
+@define-color dnd_switch_active #09272E;
+@define-color dnd_switch_thumb #FFFFFF;
+@define-color dnd_switch_thumb_active #FFFFFF;
+
+/* =============================================================================
+   NOTIFICATION CLEAR BUTTON  
+   ============================================================================= */
+
+@define-color clear_button_bg #7D4B4B;
+@define-color clear_button_hover #3A626B;
+@define-color clear_button_text #FFFFFF;
+@define-color clear_button_text_hover #FFFFFF;
+
+/* =============================================================================
+   RGBA VARIANTS WITH TRANSPARENCY
+   ============================================================================= */
+
+/* Semi-transparent backgrounds for floating elements */
+@define-color surface_transparent #rgba(82,41,41,0.9);
+@define-color control_center_bg #rgba(82,41,41,0.88);
+@define-color widget_bg_transparent #rgba(125,75,75,0.7);
+
+/* Hover states with transparency */
+@define-color button_hover_transparent #rgba(58,98,107,0.8);
+@define-color toggle_hover_transparent #rgba(72,11,2,0.2);
+
+/* Shadow with transparency */
+@define-color shadow_transparent #rgba(255,204,204,0.6);
+
+/* =============================================================================
+   HYPRDOTS WALLBASH USAGE INSTRUCTIONS
+   ============================================================================= */
+
+/*
+SETUP INSTRUCTIONS:
+
+1. Save this file as: ~/.config/wallbash/Wall-Dcol/swaync.dcol
+   (Note the first line specifies the output path)
+
+2. Make sure your main swaync style.css imports colors:
+   @import "colors.css";
+
+3. Run your wallbash script:
+   ~/.config/hypr/scripts/wallbash.sh /path/to/wallpaper.jpg
+
+WALLBASH COLOR VARIABLES USED:
+- #<wallbash_pryX> - Primary colors (X = 1,2,3,4)
+- #<wallbash_txtX> - Text colors for contrast
+- #<wallbash_XxaY> - Extended accent colors (X = palette, Y = shade)
+- #<wallbash_XXX_rgba(alpha)> - RGBA variants with transparency
+
+COLOR MAPPING:
+- wallbash_pry1 -> Primary theme color
+- wallbash_pry2 -> Secondary theme color  
+- wallbash_pry3 -> Tertiary theme color
+- wallbash_pry4 -> Error/critical color
+- wallbash_1xa1-1xa9 -> Surface color variants
+- wallbash_txt1-txt4 -> Contrasting text colors
+
+Your SwayNC will automatically match your wallpaper colors!
+*/
